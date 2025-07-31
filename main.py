@@ -28,8 +28,12 @@ def main():
 
         pygame.Surface.fill(screen, (0,0,0))
 
-        for thing in updateable:
-            thing.update(dt)
+        updateable.update(dt)
+
+        for asteroid in asteroids:
+            if asteroid.check_collision(player):
+                print(f"Game over!")
+                exit(0)
 
         for thing in drawable:
             thing.draw(screen)
